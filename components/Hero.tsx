@@ -64,47 +64,50 @@ const Hero: React.FC<HeroProps> = ({ className = '' }) => {
 
   return (
     <section 
-      className={`relative w-full ${className}`} 
+      className={`relative w-full h-screen overflow-hidden ${className}`} 
       style={{ 
-        backgroundColor: '#04070d',
-        minHeight: '100vh',
-        paddingTop: '64px'
+        backgroundColor: '#04070d'
       }}
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <video 
-          autoPlay={true}
-          muted={true}
-          loop={true}
-          playsInline={true}
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
-          style={{ filter: 'brightness(0.8) contrast(1.1)' }}
+      {/* Video Background - Full coverage without padding issues */}
+      <video 
+        autoPlay={true}
+        muted={true}
+        loop={true}
+        playsInline={true}
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ 
+          minWidth: '100%',
+          minHeight: '100%',
+          opacity: 0.6,
+          filter: 'brightness(0.8)'
+        }}
           onError={(e) => console.error('Video failed to load:', e)}
           onLoadedData={() => console.log('Video loaded successfully')}
+          onLoadedMetadata={(e) => console.log('Video metadata loaded:', e.currentTarget.videoWidth, 'x', e.currentTarget.videoHeight)}
         >
-          <source src="/assets/hero-video-bg.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-40" />
-        
-        {/* Bottom radial gradient */}
-        <div 
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
-          style={{
-            width: '800px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 40%, rgba(4,7,13,1) 70%)',
-            filter: 'blur(2px)'
-          }}
-        />
-      </div>
+        <source src="/assets/hero-video-bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Overlay to ensure dark background */}
+      <div className="absolute inset-0 bg-black bg-opacity-30 z-0" />
+      
+      {/* Bottom radial gradient */}
+      <div 
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-0"
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 40%, transparent 70%)',
+          filter: 'blur(2px)'
+        }}
+      />
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-10 py-24 min-h-screen flex flex-col justify-center">
+      {/* Main Content - Adjusted for fixed header */}
+      <div className="relative z-10 max-w-4xl mx-auto px-10 h-full flex flex-col justify-center pt-16">
         <div className="flex flex-col items-center text-center space-y-10">
           
           {/* Logo/Icon */}
