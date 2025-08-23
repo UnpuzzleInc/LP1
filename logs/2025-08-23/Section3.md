@@ -1,0 +1,1 @@
+look at section3.png and make a new component that re-create section 3. and if you can use reusable components, do it. If not, it's okay. Just do what you have to do and re-create section 3. And we'll go from there.
