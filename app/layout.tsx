@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LP1 App",
-  description: "Next.js app with Tailwind CSS v3",
+  title: "Landio - AI Automation for Modern Businesses",
+  description: "Automate Smarter. Grow Faster. With AI. AI Automation for Modern Businesses Made Simple.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
