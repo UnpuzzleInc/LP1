@@ -53,7 +53,7 @@ export default function Benefits() {
                   background: 'radial-gradient(circle at top right, rgba(213, 219, 230, 0.07) 0%, transparent 25%)',
                 }}
               />
-            <div className="mb-6 relative flex items-center justify-center" style={{ height: '250px' }}>
+            <div className="mb-6 h-48 flex items-center justify-center">
               <svg className="w-48 h-48 relative" viewBox="0 0 192 192" fill="none">
                 <defs>
                   {/* Mask to contain gradient within arc */}
@@ -152,7 +152,7 @@ export default function Benefits() {
           </div>
           
           {/* Card 2 - Measurable Impact */}
-          <div className="relative rounded-2xl p-[1px] bg-gradient-to-b from-gray-400/50 to-gray-600/20">
+          <div className="relative rounded-2xl p-[1px] bg-gradient-to-b from-gray-400/50 to-gray-600/20 group">
             <div className="bg-[#0a0a0a] rounded-2xl p-8 h-full relative overflow-hidden">
               {/* Top-right gradient glow - Landio style */}
               <div 
@@ -162,13 +162,13 @@ export default function Benefits() {
                 }}
               />
             <div className="mb-6 h-48 flex items-center justify-center">
-              <div className="relative">
-                {/* Bar chart visualization */}
+              <div className="relative w-full flex justify-center">
+                {/* Bar chart visualization - animated on hover with dark theme */}
                 <div className="flex items-end gap-3">
-                  <div className="w-8 h-16 bg-gray-700 rounded-t"></div>
-                  <div className="w-8 h-20 bg-gray-600 rounded-t"></div>
-                  <div className="w-8 h-24 bg-gray-500 rounded-t"></div>
-                  <div className="w-8 h-20 bg-gray-600 rounded-t"></div>
+                  <div className="w-10 h-20 bg-gray-900 rounded-t origin-bottom transition-transform duration-500 ease-out group-hover:scale-y-[1.2]"></div>
+                  <div className="w-10 h-28 bg-gray-800 rounded-t origin-bottom transition-transform duration-500 ease-out group-hover:scale-y-[1.14]"></div>
+                  <div className="w-10 h-32 bg-gray-800 rounded-t origin-bottom transition-transform duration-500 ease-out group-hover:scale-y-[1.125]"></div>
+                  <div className="w-10 h-24 bg-gray-900 rounded-t origin-bottom transition-transform duration-500 ease-out group-hover:scale-y-[1.67]"></div>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function Benefits() {
           </div>
           
           {/* Card 3 - Seamless Integration */}
-          <div className="relative rounded-2xl p-[1px] bg-gradient-to-b from-gray-400/50 to-gray-600/20">
+          <div className="relative rounded-2xl p-[1px] bg-gradient-to-b from-gray-400/50 to-gray-600/20 group">
             <div className="bg-[#0a0a0a] rounded-2xl p-8 h-full relative overflow-hidden">
               {/* Top-right gradient glow - Landio style */}
               <div 
@@ -194,22 +194,52 @@ export default function Benefits() {
               />
             <div className="mb-6 h-48 flex items-center justify-center">
               <div className="relative">
-                {/* Network/connection visualization */}
-                <div className="relative w-32 h-32">
+                {/* Network/connection visualization - rotates on hover */}
+                <div className="relative w-48 h-48 transition-transform duration-500 ease-out group-hover:rotate-[15deg]">
                   {/* Center node */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full"></div>
-                  {/* Connected nodes */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-500 rounded-full"></div>
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-500 rounded-full"></div>
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-gray-500 rounded-full"></div>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-gray-500 rounded-full"></div>
-                  {/* Connection lines */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 128 128">
-                    <line x1="64" y1="64" x2="64" y2="12" stroke="gray" strokeWidth="1" opacity="0.5"/>
-                    <line x1="64" y1="64" x2="64" y2="116" stroke="gray" strokeWidth="1" opacity="0.5"/>
-                    <line x1="64" y1="64" x2="12" y2="64" stroke="gray" strokeWidth="1" opacity="0.5"/>
-                    <line x1="64" y1="64" x2="116" y2="64" stroke="gray" strokeWidth="1" opacity="0.5"/>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full z-10"></div>
+                  
+                  {/* Individual lines radiating from center - extended with longest at top */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 192 192">
+                    {/* Line 1: Top at 0 degrees - LONGEST */}
+                    <line x1="96" y1="96" x2="96" y2="3" stroke="gray" strokeWidth="4" opacity="0.5"/>
+                    {/* Line 2: Top-right at ~45 degrees - LONG */}
+                    <line x1="96" y1="96" x2="178" y2="14" stroke="gray" strokeWidth="4" opacity="0.5"/>
+                    {/* Line 3: Right at ~75 degrees - MEDIUM */}
+                    <line x1="96" y1="96" x2="186" y2="70" stroke="gray" strokeWidth="4" opacity="0.5"/>
+                    {/* Line 4: Bottom-right at ~150 degrees - SHORTER */}
+                    <line x1="96" y1="96" x2="150" y2="150" stroke="gray" strokeWidth="4" opacity="0.5"/>
+                    {/* Line 5: Bottom-left at ~225 degrees - SHORTER */}
+                    <line x1="96" y1="96" x2="42" y2="150" stroke="gray" strokeWidth="4" opacity="0.5"/>
+                    {/* Line 6: Left at ~270 degrees - MEDIUM */}
+                    <line x1="96" y1="96" x2="6" y2="96" stroke="gray" strokeWidth="4" opacity="0.5"/>
                   </svg>
+                  
+                  {/* Nodes at end of each line */}
+                  {/* Node 1 - Top */}
+                  <div className="absolute" style={{ top: '3px', left: '96px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
+                  {/* Node 2 - Top-right */}
+                  <div className="absolute" style={{ top: '14px', left: '178px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
+                  {/* Node 3 - Right */}
+                  <div className="absolute" style={{ top: '70px', left: '186px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
+                  {/* Node 4 - Bottom-right */}
+                  <div className="absolute" style={{ top: '150px', left: '150px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
+                  {/* Node 5 - Bottom-left */}
+                  <div className="absolute" style={{ top: '150px', left: '42px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
+                  {/* Node 6 - Left */}
+                  <div className="absolute" style={{ top: '96px', left: '6px' }}>
+                    <div className="w-5 h-5 bg-gray-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                  </div>
                 </div>
               </div>
             </div>
