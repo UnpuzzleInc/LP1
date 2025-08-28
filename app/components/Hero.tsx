@@ -1,8 +1,17 @@
+'use client'
+
 import Badge from './ui/Badge'
 import Button from './ui/Button'
 import SocialLinks from './ui/SocialLinks'
 
 const Hero = () => {
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('testimonial-section')
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Background Video */}
@@ -68,6 +77,19 @@ const Hero = () => {
         <div className="flex justify-center">
           <SocialLinks />
         </div>
+      </div>
+
+      {/* Floating Scroll Indicator */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <button
+          onClick={scrollToNextSection}
+          className="text-gray-400 hover:text-white transition-colors duration-300 animate-float"
+          aria-label="Scroll to next section"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </section>
   )
