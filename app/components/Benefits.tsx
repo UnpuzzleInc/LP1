@@ -97,10 +97,12 @@ export default function Benefits() {
                   className="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                 
-                {/* Draw only the top half arc */}
-                <path 
-                  d="M 1 96 A 95 95 0 0 1 191 96" 
-                  stroke="url(#gradient1)" 
+                {/* Full circle with top-to-bottom fading gradient */}
+                <circle 
+                  cx="96" 
+                  cy="96" 
+                  r="95" 
+                  stroke="url(#clockGradient)" 
                   strokeWidth="1.5"
                   fill="none"
                 />
@@ -134,9 +136,13 @@ export default function Benefits() {
                 />
                 
                 <defs>
-                  <linearGradient id="gradient1" x1="96" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="rgb(156, 163, 175)" stopOpacity="0.5"/>
-                    <stop offset="100%" stopColor="rgb(107, 114, 128)" stopOpacity="0.2"/>
+                  {/* Top-to-bottom gradient that fades completely by 50% */}
+                  <linearGradient id="clockGradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="objectBoundingBox">
+                    <stop offset="0%" stopColor="rgb(156, 163, 175)" stopOpacity="0.6"/>
+                    <stop offset="25%" stopColor="rgb(156, 163, 175)" stopOpacity="0.3"/>
+                    <stop offset="40%" stopColor="rgb(156, 163, 175)" stopOpacity="0.1"/>
+                    <stop offset="50%" stopColor="rgb(156, 163, 175)" stopOpacity="0"/>
+                    <stop offset="100%" stopColor="rgb(156, 163, 175)" stopOpacity="0"/>
                   </linearGradient>
                 </defs>
               </svg>
